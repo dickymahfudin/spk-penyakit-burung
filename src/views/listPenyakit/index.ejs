@@ -1,0 +1,36 @@
+<div class="row">
+  <%lists.forEach((list,i)=>{ %>
+
+  <div class="col-lg-6 mb-4">
+    <div class="card h-100">
+      <div class="card-header pb-0 p-3">
+        <div class="row">
+          <div class="d-flex align-items-center">
+            <h3 class="mb-0"><%=list.nama%></h3>
+          </div>
+        </div>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table align-items-center table-bordered table-striped" width="100%">
+          <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Gejala</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Bobot</th>
+              <th class="text-uppercase text-secondary text-xs font-weight-bolder">Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%list.ListGejalas.forEach((listGejala,i)=>{ %>
+            <tr>
+              <td class="align-middle text-start text-xs"><%=listGejala.gejala.nama%></td>
+              <td class="align-middle text-start text-xs"><%=listGejala.bobot%></td>
+              <td class="align-middle text-start text-xs"><%=listGejala.keterangan%></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <%}) %>
+</div>

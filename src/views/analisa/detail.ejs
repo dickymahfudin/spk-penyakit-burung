@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+          <h4 class="text-white text-capitalize ps-3">Detail Data <%=analisa.nama%></h4>
+        </div>
+      </div>
+      <div class="card-body px-5 pb-5">
+        <h5>Terdampak <%=analisa.penyakit.nama%> <%=analisa.hasil%>%</h5>
+        <div class="table-responsive">
+          <table class="table align-items-center table-bordered table-striped" width="100%">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-secondary text-md font-weight-bolder">Kode</th>
+                <th class="text-uppercase text-secondary text-md font-weight-bolder">Gejala</th>
+                <th class="text-uppercase text-secondary text-md font-weight-bolder">Bobot Input</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% analisa.list.forEach( (listGejala, i) => { %>
+              <tr>
+                <td class="align-middle text-start text-md"><%=listGejala.gejala.kode%></td>
+                <td class="align-middle text-start text-md"><%=listGejala.gejala.nama%></td>
+                <td class="align-middle text-start text-md"><%=listGejala.bobot%></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-body px-5 pb-5">
+        <div class="col-12">
+          <h3>Perhitungan</h3>
+          <h5>Fuzzyfikasi</h5>
+          <% hitung.himpunan.forEach( (himpunan, i) => { %>
+          <div class="table-responsive">
+            <div class="col-6">
+              <p><%=himpunan.nama%> (<%=himpunan.keterangan%>)</p>
+              <p><%=himpunan.latex%></p>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+
+        <div class="col-12">
+          <h5>Defuzzyfikasi</h5>
+          <div class="col-6">
+            <p>\[NSF = {\sum a - predikat * z1 \over \sum a - predikat}\]</p>
+            <p><%=hitung.defuzzyfikasi.latex%></p>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <h5>Presentase Awal</h5>
+          <div class="col-6">
+            <p>
+              \[P Awal = { <%=hitung.defuzzyfikasi.result%> \over <%=hitung.lengthGejala%> } * 100 = <%=hitung.pAwal%>\]
+            </p>
+          </div>
+        </div>
+        <div class="col-12">
+          <h5>Presentase Akhir</h5>
+          <div class="col-6">
+            <p>
+              \[P Akhir = { <%=hitung.inputLength%> \over <%=hitung.lengthGejala%> } * <%=hitung.pAwal%> =
+              <%=hitung.pAkhir%>\]
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

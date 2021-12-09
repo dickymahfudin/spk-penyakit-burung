@@ -1,0 +1,145 @@
+<div class="row">
+  <div class="col-xl-3 col-sm-6 mb-4">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div
+          class="
+            icon icon-lg icon-shape
+            bg-gradient-dark
+            shadow-dark
+            text-center
+            border-radius-xl
+            mt-n4
+            position-absolute
+          "
+        >
+          <i class="material-icons opacity-10">bug_report</i>
+        </div>
+        <div class="text-end pt-1">
+          <p class="text-sm mb-0 text-capitalize">Jumlah Data Penyakit</p>
+          <h4 class="mb-0"><%=penyakit.length%></h4>
+        </div>
+      </div>
+      <hr class="dark horizontal my-0" />
+      <div class="card-footer p-3">
+        <a class="text-dark text-md font-weight-bolder" href="/penyakit">Detail</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-sm-6 mb-4">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div
+          class="
+            icon icon-lg icon-shape
+            bg-gradient-primary
+            shadow-dark
+            text-center
+            border-radius-xl
+            mt-n4
+            position-absolute
+          "
+        >
+          <i class="material-icons opacity-10">coronavirus</i>
+        </div>
+        <div class="text-end pt-1">
+          <p class="text-sm mb-0 text-capitalize">Jumlah Data Gejala</p>
+          <h4 class="mb-0"><%=gejala.length%></h4>
+        </div>
+      </div>
+      <hr class="dark horizontal my-0" />
+      <div class="card-footer p-3">
+        <a class="text-primary text-md font-weight-bolder" href="/gejala">Detail</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-sm-6 mb-4">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div
+          class="
+            icon icon-lg icon-shape
+            bg-gradient-success
+            shadow-dark
+            text-center
+            border-radius-xl
+            mt-n4
+            position-absolute
+          "
+        >
+          <i class="material-icons opacity-10">receipt_long</i>
+        </div>
+        <div class="text-end pt-1">
+          <p class="text-sm mb-0 text-capitalize">Jumlah Data Daftar Penyakit</p>
+          <h4 class="mb-0"><%=penyakit.length%></h4>
+        </div>
+      </div>
+      <hr class="dark horizontal my-0" />
+      <div class="card-footer p-3">
+        <a class="text-success text-md font-weight-bolder" href="/list">Detail</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-sm-6 mb-4">
+    <div class="card">
+      <div class="card-header p-3 pt-2">
+        <div
+          class="
+            icon icon-lg icon-shape
+            bg-gradient-primary
+            shadow-dark
+            text-center
+            border-radius-xl
+            mt-n4
+            position-absolute
+          "
+        >
+          <i class="material-icons opacity-10">manage_search</i>
+        </div>
+        <div class="text-end pt-1">
+          <p class="text-sm mb-0 text-capitalize">Jumlah Data Analisa Penyakit</p>
+          <h4 class="mb-0"><%=analisa.length%></h4>
+        </div>
+      </div>
+      <hr class="dark horizontal my-0" />
+      <div class="card-footer p-3">
+        <a class="text-primary text-md font-weight-bolder" href="/analisa">Detail</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+          <h4 class="text-white text-capitalize ps-3">Data Analisa Penyakit</h4>
+        </div>
+      </div>
+      <div class="card-body px-5 pb-5">
+        <div class="table-responsive p-0">
+          <table
+            class="table align-items-center table-bordered table-striped"
+            id="dataTable"
+            state="detail"
+            url="/analisa/table"
+            width="100%"
+          ></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% const toastSuccess = messages.success %> <% const toastError = messages.error %>
+<script>
+  $(document).ready(function () {
+    const toastSuccess = '<%= toastSuccess %>';
+    const toastError = '<%= toastError %>';
+    console.log(toastSuccess);
+    toastSuccess != '' && notification('success', toastSuccess);
+    toastError != '' && notification('error', toastError);
+  });
+</script>

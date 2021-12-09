@@ -1,0 +1,37 @@
+<div class="card my-4">
+  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+      <h4 class="text-white text-capitalize ps-3">Analisa Penyakit</h4>
+    </div>
+  </div>
+  <div class="card-body px-5 pb-5">
+    <form id="form" action="/analisa" method="POST">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="input-group input-group-static my-4">
+            <label class="form-label">Nama</label>
+            <input type="text" class="form-control" name="nama" required />
+          </div>
+        </div>
+
+        <% gejalas.forEach( (gejala, i) => { %>
+        <div class="col-md-4">
+          <div class="input-group input-group-static mb-3">
+            <label for="a" class="ms-0"><%= gejala.nama %></label>
+            <select class="form-select form-control" name="<%= gejala.id %>">
+              <option disabled selected value>-- <%= gejala.nama %> --</option>
+              <option value="1">Sangat</option>
+              <option value="0.8">Ya</option>
+              <option value="0">Tidak</option>
+            </select>
+          </div>
+        </div>
+        <% }) %>
+
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-primary col-md-12">Simpan Data</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
