@@ -34,7 +34,7 @@ module.exports = {
     });
     const createdAt = new Date();
     const updatedAt = new Date();
-    const data = [{ nama: 'laporan', penyakitId: 1, hasil: 6.53, createdAt, updatedAt }];
+    const data = [{ nama: 'laporan', penyakitId: 1, hasil: 3.27, createdAt, updatedAt }];
     await queryInterface.bulkInsert('Analisas', data);
   },
   down: async (queryInterface, Sequelize) => {
