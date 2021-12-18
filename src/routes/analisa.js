@@ -33,7 +33,7 @@ router.post('/', async (req, res, next) => {
     }
     const hitung = perhitungan({ listGejala, inputs });
     if (!hitung) {
-      req.flash('error', 'Data Penyakit Tidak Di Temukan Gari Gejala Tersebut');
+      req.flash('error', 'Data Penyakit Tidak Di Temukan Dari Gejala Tersebut');
       return res.redirect('/analisa');
     }
     console.log(hitung);
@@ -81,6 +81,13 @@ router.get('/detail/:id', async (req, res, next) => {
   const hitung = perhitungan({ listGejala, inputs });
   // return res.json(hitung);
   res.render('analisa/detail', { title: 'Analisa', analisa, hitung });
+});
+router.get('/delete/:id', async (req, res, next) => {
+  const id = req.params.id;
+  const tempAnalisa = await Analisa.findByPk(id);
+  await tempAnalisa.destroy();
+  req.flash('success', 'Data Berhasil Dihapus');
+  return res.redirect('/analisa');
 });
 
 module.exports = router;

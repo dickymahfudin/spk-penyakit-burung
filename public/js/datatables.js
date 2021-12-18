@@ -34,6 +34,19 @@ $(document).ready(function () {
             </span>`;
           },
         });
+      } else if (state === 'no-edit') {
+        response.columns.push({
+          data: 'id',
+          title: '',
+          searchable: false,
+          sortable: false,
+          render: function (id, type, full, meta) {
+            return `<span>
+            <a href="/${parsUrl}/detail/${id}" class="modal-open" title="Detail ${full.nama}" id="${id}"><i class="fas fa-info-circle"></i></a> | 
+            <a href="/${parsUrl}/delete/${id}" onclick="return confirm('Anda yakin ingin menghapus item ini?');" title="Delete ${full.nama}" id="${id}"><i class="fas fa-trash text-danger"></i></a>
+            </span>`;
+          },
+        });
       }
 
       $('#dataTable').DataTable({
