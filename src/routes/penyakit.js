@@ -8,7 +8,10 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/table', async (req, res, next) => {
-  const penyakits = await Penyakit.findAll({ raw: true, attributes: { exclude: ['createdAt', 'updatedAt'] } });
+  const penyakits = await Penyakit.findAll({
+    raw: true,
+    attributes: { exclude: ['createdAt', 'updatedAt', 'gambar', 'saran'] },
+  });
   return res.json(jsonToTable(penyakits));
 });
 
